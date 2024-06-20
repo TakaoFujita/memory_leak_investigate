@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "memory-leak-investigation"
+version = "0.1.0"
+description = ""
+authors = ["TakaoFujita <t-fujita@skydisc.jp>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+langchain-community = "^0.2.5"
+objgraph = "^3.6.1"
+memory-profiler = "^0.61.0"
+pdfminer-six = "^20231228"
+pyqt5 = "^5.15.10"
+matplotlib = "^3.9.0"
+unstructured = "^0.14.6"
+python-pptx = "^0.6.23"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -39,7 +39,29 @@ def main() -> None:
     gc.collect()
 
 
+def main_with_tracemalloc() -> None:
+    folder_path = get_dir_path(_target_extension)
+    # メモリプロファイルの初期状態
+    tracemalloc.start(10)
+    current_snapshot = tracemalloc.take_snapshot()
+    for file_path in scan_dir(folder_path):
+        print(file_path)
+        # 評価対象の処理
+        loader_process(file_path)
+        next_snapshot = tracemalloc.take_snapshot()
+        top_stats = next_snapshot.compare_to(current_snapshot, 'lineno')
+        for stat in top_stats[:10]:
+            print(stat.traceback.format())
+    gc.collect()
+    print("gc.collect()後")
+    next_snapshot = tracemalloc.take_snapshot()
+    top_stats = next_snapshot.compare_to(current_snapshot, 'lineno')
+    for stat in top_stats[:10]:
+        print(stat.traceback.format())
+
+
 if __name__ == "__main__":
     time.sleep(5)
     main()
+    # main_with_tracemalloc()
     time.sleep(5)

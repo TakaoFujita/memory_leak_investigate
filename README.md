@@ -6,7 +6,11 @@ pythonは 3.11 or 3.12
 `source .venv/bin/activate`  
 `poetry install --sync --no-root`
 
-2. 実行  
+2. ファイル準備  
+pdf...ワークスペース直下にpdfsフォルダを作成し、pdfファイルを格納する。
+pptx...ワークスペース直下にpptxsフォルダを作成し、pptxファイルを格納する。
+
+3. 実行  
 `mprof run src/xxxx.py`  
 `mprof plot`
 
